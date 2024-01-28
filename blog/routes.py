@@ -1,6 +1,9 @@
 from blog import blog
 from flask import render_template
+from app.models.post import Post
+
 
 @blog.route('/blog')
 def blog():
-    return render_template('index.html')
+    posts = Post.query.all()
+    return render_template('post/index.html', posts=posts)
